@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <!-- div that will hold our WebGL canvas -->
+  <div id="canvas"></div>
+  <!-- div used to create our plane -->
+  <div class="plane">
+  <!-- image that will be used as texture by our plane -->
+  <img src="img/Desktop.png" crossorigin="" />
+  </div>
+
+  <h1 id="title">3DKNIGHT Portfolio</h1>
+
+  <!-- vertex shader -->
+  <script id="plane-vs" type="x-shader/x-vertex">
+  precision mediump float;
+  // those are the mandatory attributes that the lib sets
+  attribute vec3 aVertexPosition;
+  attribute vec2 aTextureCoord;
+  // those are mandatory uniforms that the lib sets and that contain our model view and projection matrix
+  uniform mat4 uMVMatrix;
+  uniform mat4 uPMatrix;
+  // our texture matrix that will handle image cover
+  uniform mat4 uTextureMatrix0;
+  // pass your vertex and texture coords to the fragment shader
+  varying vec3 vVertexPosition;
+  varying vec2 vTextureCoord;
+  void main() {
+  vec3 vertexPosition = aVertexPosition;
+  gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
+  // set the varyings
+  // here we use our texture matrix to calculate the accurate texture coords
+  vTextureCoord = (uTextureMatrix0 * vec4(aTextureCoord, 0.0, 1.0)).xy;
+  vVertexPosition = vertexPosition;
+  }
+  </script>
+  <!-- fragment shader -->
+  <script id="plane-fs" type="x-shader/x-fragment">
+  precision mediump float;
+  // get our varyings
+  varying vec3 vVertexPosition;
+  varying vec2 vTextureCoord;
+  // the uniform we declared inside our javascript
+  uniform float uTime;
+  // our texture sampler (default name, to use a different name please refer to the documentation)
+  uniform sampler2D uSampler0;
+  void main() {
+  // get our texture coords from our varying
+  vec2 textureCoord = vTextureCoord;
+  // displace our pixels along the X axis based on our time uniform
+  // textures coords are ranging from 0.0 to 1.0 on both axis
+  textureCoord.x += sin(textureCoord.y * 25.0) * cos(textureCoord.x * 25.0) * (cos(uTime / 50.0)) / 25.0;
+  // map our texture with the texture matrix coords
+  gl_FragColor = texture2D(uSampler0, textureCoord);
+  }
+  </script>
+
+
+  <script src="js/vendor/modernizr-3.11.8.min.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>
