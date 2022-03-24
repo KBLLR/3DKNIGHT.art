@@ -1,5 +1,6 @@
 import {Curtains, Plane} from "curtainsjs";
 import $ from "jquery";
+import Proton from "proton-engine";
 import * as THREE from 'three'
 import * as PIXI from "pixi.js"
 import { SVG, extend as SVGextend, Element as SVGElement } from '@svgdotjs/svg.js'
@@ -9,12 +10,12 @@ import { WebGLRenderer } from "three";
 import * as core from '@theatre/core';
 import {getProject, types as t} from "@theatre/core"
 import studio from '@theatre/studio';
-import state from './state.json'
+// import state from './state.json'
 
 // Only initialises Studio on development mode 
-// if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === "development") {
 studio.initialize()
-// }
+}
 // To hide/show the UI pressing alt + \
 studio.ui.hide()
 
@@ -23,7 +24,8 @@ const proj = core.getProject("G.O.D")
 const sheet = proj.sheet("Scene")
 const animation = sheet.sequence
 animation.position = 0
-animation.position = 9
+animation.scaleY = 0
+animation.scaleX = 0
 
 
 // Add the elements to the scene
@@ -39,6 +41,16 @@ const eyeball = sheet.object("Eyeball", {
       label: "Vertical"
     })
   }),
+  stretch: t.compound({
+    x: t.number(0, {
+      range: [0, 20],
+      label: "ScaleX"
+    }),
+    y: t.number(0, {
+      range: [0, 20],
+      label: "ScaleY"
+    })
+  }),
   light: t.stringLiteral(
     "green", 
     {
@@ -50,15 +62,17 @@ const eyeball = sheet.object("Eyeball", {
   ),
 })
 
-const eye = document.getElementById('god__eye')
+const eye = document.querySelector('.god__eye')
 
-setTimeout(() => {
-  document.appendChild(eye)
-})
+// setTimeout(() => {
+//   document.appendChild(eye)
+// })
 
 eyeball.onValuesChange((newValues) => { 
   eye.style.left = newValues.position.x + 'px'
   eye.style.top = newValues.position.y + 'px'
+  eye.style.transformY = newValues.scaleY + 'px'
+  eye.style.transformX = newValues.scaleX + 'px'
 })
 
 eye.addEventListener("click", () => {
@@ -67,8 +81,6 @@ eye.addEventListener("click", () => {
     range: [ 0, 9]
   })
 })
-
-
 
 
 

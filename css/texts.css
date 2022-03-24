@@ -1,13 +1,17 @@
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
 
 
-  #title {
-    font-family: var(--font);
-    position:  absolute; 
-    bottom:  2%; 
-    right: 4%; 
-    -webkit-text-stroke: var(--stroke-txt);
-    text-stroke: var(--stroke-txt);
-    color: transparent; 
-  }
+#title {
+font-family: var(--font);
+font-size: var(--size16px);
+position: fixed;
+letter-spacing: 0.16px;
+top: 2%;
+left: 3%;
+z-index: -1;
+-webkit-text-stroke: var(--stroke-txt);
+text-stroke: var(--stroke-txt);
+color: transparent;
+cursor: pointer; 
+}
