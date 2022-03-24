@@ -63,7 +63,7 @@ const eyeball = sheet.object("Eyeball", {
 })
 
 const eye = document.querySelector('.god__eye')
-
+ 
 // setTimeout(() => {
 //   document.appendChild(eye)
 // })
