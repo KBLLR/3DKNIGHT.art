@@ -25,6 +25,7 @@
 
 .god__eye {
     position: relative;
+    padding: 4px;
     max-width: 40%;
 }
 

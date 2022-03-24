@@ -12,7 +12,7 @@
    ========================================================================== */
 :root {
 /* Text natives */
- --txt-color: #222;
+ --txt-color: #110F1C;
  --size16px:  1em;
  --line-height: 1.4;
  --font:'Orbitron', sans-serif;
@@ -21,6 +21,9 @@
  --stroke-helper: 4px hsl(269.25, 93.75%, 62.5%);
  /* Animation */
  --easeOut: cubic-bezier(0.19, 1, 0.22, 1);
+ /* COLOR PALETTE + BG */
+ --bg-movie: radial-gradient(100.83% 173.11% at 2.63% -0.83%, #0F2326 0%, #0A142A 47.62%, #302437 100%);
+ --bg-default: linear-gradient(23deg,  #ededed, #e2e2e2);
 }
 
 html {
@@ -109,7 +112,7 @@ textarea {
    justify-content: center;
    position: relative;
    overflow: hidden;
-   background: linear-gradient(23deg,  #ededed, #e2e2e2);
+   background: var(--bg-default);
    width: 100%;
    height: 100%;
    margin: 0;
