@@ -10,11 +10,19 @@
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
+   :root {
+    /* Text natives */
+     --txt-color: #222;
+     --size16px:  1em;
+     --line-height: 1.4;
+     --font:'Orbitron', sans-serif;
+     --h1-size: 2rem;
+     --stroke-txt: 0.4px #222;
+     --stroke-helper: 4px hsl(269.25, 93.75%, 62.5%);
+   }
 
 html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
+  
 }
 
 /*
@@ -75,7 +83,6 @@ fieldset {
 /*
  * Allow only vertical resizing of textareas.
  */
-
 textarea {
   resize: vertical;
 }
@@ -83,33 +90,21 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+   
    body {
    /* make the body fits our viewport */
-   position: relative;
-   width: 100%;
+   display: grid;
+   grid-template-rows: [row1] auto [row2] auto [row3] auto[row4];
+   grid-template-columns: [col1] auto [col2] auto[col3] auto [col4];
+   background: linear-gradient(23deg,  #ededed, #e2e2e2);
+   width: 100vw;
    height: 100vh;
    margin: 0;
    overflow: hidden;
    }
-   #canvas {
-   /* make the canvas wrapper fits the document */
-   position: absolute;
-   top: 0;
-   right: 0;
-   bottom: 0;
-   left: 0;
-   }
-   .plane {
-   /* define the size of your plane */
-   width: 100%;
-   height: 100vh;
-   }
-   .plane img {
-   /* hide the img element */
-   display: none;
-   }
 
-   #title { position:  absolute; top:  5%; left: 5%; color: white; }
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
