@@ -26,6 +26,11 @@ npm run build
 Pushing to the `main` branch triggers a GitHub Actions workflow that
 publishes the contents of `dist` to GitHub Pages. Enable GitHub Pages for
 the repository and select the *GitHub Actions* source to make the live
-site available.
+site available. Once the workflow completes, the site will be accessible at:
+
+```
+https://KBLLR.github.io/3DKNIGHT.art/
+```
+
 
 
