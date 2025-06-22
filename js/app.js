@@ -68,11 +68,10 @@ const eye = document.querySelector('.god__eye')
 //   document.appendChild(eye)
 // })
 
-eyeball.onValuesChange((newValues) => { 
-  eye.style.left = newValues.position.x + 'px'
-  eye.style.top = newValues.position.y + 'px'
-  eye.style.transformY = newValues.scaleY + 'px'
-  eye.style.transformX = newValues.scaleX + 'px'
+eyeball.onValuesChange((newValues) => {
+  eye.style.left = `${newValues.position.x}px`
+  eye.style.top = `${newValues.position.y}px`
+  eye.style.transform = `scaleX(${newValues.stretch.x}) scaleY(${newValues.stretch.y})`
 })
 
 eye.addEventListener("click", () => {
