@@ -1,19 +1,12 @@
-import {Curtains, Plane} from "curtainsjs";
 import $ from "jquery";
-import Proton from "proton-engine";
-import * as THREE from 'three'
-import * as PIXI from "pixi.js"
-import { SVG, extend as SVGextend, Element as SVGElement } from '@svgdotjs/svg.js'
 import gsap from 'gsap'
-import { easePack } from 'gsap'
-import { WebGLRenderer } from "three";
 import * as core from '@theatre/core';
 import {getProject, types as t} from "@theatre/core"
 import studio from '@theatre/studio';
 // import state from './state.json'
 
 // Only initialises Studio on development mode 
-if (process.env.NODE_ENV === "development") {
+if (import.meta.env.DEV) {
 studio.initialize()
 }
 // To hide/show the UI pressing alt + \
