@@ -11,3 +11,5 @@ Install dependencies and start a dev server with Vite:
 ```bash
 npm install
 npm run dev
+
+```
