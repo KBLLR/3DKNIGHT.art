@@ -2,7 +2,7 @@
   "short_name": "3DKNIGHT",
   "name": "3DKNIGHT",
   "icons": [{
-    "src": "icon.png",
+    "src": "/icon.png",
     "type": "image/png",
     "sizes": "192x192"
   }],
