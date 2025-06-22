@@ -28,4 +28,9 @@ publishes the contents of `dist` to GitHub Pages. Enable GitHub Pages for
 the repository and select the *GitHub Actions* source to make the live
 site available.
 
+## Testing
+
+There are currently no automated tests for this project. The `npm test`
+script only prints a placeholder message.
+
 
