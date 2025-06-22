@@ -33,4 +33,9 @@ https://KBLLR.github.io/3DKNIGHT.art/
 ```
 
 
+## Testing
+
+There are currently no automated tests for this project. The `npm test`
+script only prints a placeholder message.
+
 
