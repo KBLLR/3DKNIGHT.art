@@ -8,5 +8,9 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist'
+
+  server: {
+    open: true
+
   }
 })

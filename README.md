@@ -29,10 +29,8 @@ the repository and select the *GitHub Actions* source to make the live
 site available. Once the workflow completes, the site will be accessible at:
 
 ```
-https://<user>.github.io/3DKNIGHT.art/
+https://KBLLR.github.io/3DKNIGHT.art/
 ```
 
-Replace `<user>` with your GitHub username. No Vercel configuration is
-required.
 
 
