@@ -25,3 +25,5 @@ HTML entry points (`index.html`, `anjaProject.html`, `404.html`) live in the pro
 
 Run `npm run build` to create the production build in `dist/` and `npm run preview` to preview it locally.
 
+
+This commit triggers a GitHub Pages build.
