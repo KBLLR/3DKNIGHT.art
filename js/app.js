@@ -1,5 +1,3 @@
-import $ from "jquery";
-import gsap from 'gsap'
 import * as core from '@theatre/core';
 import {getProject, types as t} from "@theatre/core"
 import studio from '@theatre/studio';
