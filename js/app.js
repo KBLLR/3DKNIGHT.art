@@ -3,9 +3,9 @@ import {getProject, types as t} from "@theatre/core"
 import studio from '@theatre/studio';
 // import state from './state.json'
 
-// Only initialises Studio on development mode 
-if (import.meta.env.DEV) {
-studio.initialize()
+// Only initialise Studio in development mode
+if (import.meta.env.MODE === 'development') {
+  studio.initialize()
 }
 // To hide/show the UI pressing alt + \
 studio.ui.hide()
