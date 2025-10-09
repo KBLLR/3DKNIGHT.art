@@ -56,7 +56,18 @@ app.ticker.add((delta) => {
 });
 
 /**
- * Cubic interpolation based on https://github.com/osuushi/Smooth.js
+ * @file This script creates a smooth, trailing visual effect that follows the user's mouse cursor.
+ * It uses the PIXI.js library to render a `SimpleRope` object, which is continuously updated to create the trail.
+ * The trail's smoothness is achieved through cubic interpolation, ensuring a fluid path without sharp edges.
+ */
+
+/**
+ * Clips an index to the bounds of an array.
+ * This function is used to prevent out-of-bounds errors when accessing array elements.
+ *
+ * @param {number} k - The index to clip.
+ * @param {Array<any>} arr - The array to which the index should be clipped.
+ * @returns {any} The value from the array at the clipped index.
  */
 function clipInput(k, arr) {
     if (k < 0) k = 0;
@@ -64,10 +75,29 @@ function clipInput(k, arr) {
     return arr[k];
 }
 
+/**
+ * Calculates the tangent at a specific point in an array.
+ * The tangent is used to determine the slope of the curve for cubic interpolation.
+ *
+ * @param {number} k - The index at which to calculate the tangent.
+ * @param {number} factor - A scaling factor for the tangent.
+ * @param {Array<number>} array - The array of numbers from which to calculate the tangent.
+ * @returns {number} The calculated tangent.
+ */
 function getTangent(k, factor, array) {
     return factor * (clipInput(k + 1, array) - clipInput(k - 1, array)) / 2;
 }
 
+/**
+ * Performs cubic interpolation on an array of numbers.
+ * This function creates a smooth curve between points, which is essential for the fluid motion of the trail.
+ * It is based on the interpolation method from https://github.com/osuushi/Smooth.js.
+ *
+ * @param {Array<number>} array - The array of numbers to interpolate.
+ * @param {number} t - The position to interpolate at, typically between 0 and `array.length - 1`.
+ * @param {number} [tangentFactor=1] - An optional factor to influence the curve's tangents.
+ * @returns {number} The interpolated value.
+ */
 function cubicInterpolation(array, t, tangentFactor) {
     if (tangentFactor == null) tangentFactor = 1;
 
